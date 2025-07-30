@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title %}My Profile | GreenEarth{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4 text-center">
+          <h2 class="mb-4 text-success fw-bold">My Profile</h2>
+          {% if user.profile_picture %}
+            <img src="{{ user.profile_picture.url }}" alt="Profile Picture" class="rounded-circle mb-3" style="width: 120px; height: 120px; object-fit: cover;">
+          {% else %}
+            <div class="bg-light rounded-circle d-inline-flex align-items-center justify-content-center mb-3" style="width: 120px; height: 120px;">
+              <span class="text-muted">No Image</span>
+            </div>
+          {% endif %}
+          <h4 class="fw-bold mt-2">{{ user.username }}</h4>
+          <p class="text-muted mb-1">{{ user.email }}</p>
+          <div class="row mt-4 mb-2">
+            <div class="col-6 text-end"><strong>First Name:</strong></div>
+            <div class="col-6 text-start">{{ user.first_name }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-end"><strong>Last Name:</strong></div>
+            <div class="col-6 text-start">{{ user.last_name }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-end"><strong>Role:</strong></div>
+            <div class="col-6 text-start">{{ user.get_role_display }}</div>
+          </div>
+          <div class="row mb-2">
+            <div class="col-6 text-end"><strong>Eco Points:</strong></div>
+            <div class="col-6 text-start"><span class="badge bg-success">{{ user.eco_points }}</span></div>
+          </div>
+          <div class="d-grid mt-4">
+            <a href="{% url 'edit_profile' %}" class="btn btn-outline-success btn-lg">Edit Profile</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

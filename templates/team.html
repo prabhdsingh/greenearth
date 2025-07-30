@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block title %}Our Team | GreenEarth{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <h2 class="text-success fw-bold mb-4 text-center">Meet Our Team</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center">
+    <div class="col">
+      <div class="card h-100 shadow-lg border-0 text-center">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Kshitiz Bakshi</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 shadow-lg border-0 text-center">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Ankita Chopra</h5>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 shadow-lg border-0 text-center">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Anishka Dogra</h5>
+        </div>
+      </div>
+    </div>
+      <div class="col">
+      <div class="card h-100 shadow-lg border-0 text-center">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Gurmanjit Kaur</h5>
+        </div>
+      </div>
+    </div>
+      <div class="col">
+      <div class="card h-100 shadow-lg border-0 text-center">
+        <div class="card-body">
+          <h5 class="card-title fw-bold">Prabhdeep Singh</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="text-center mt-5">
+    <a href="{% url 'about' %}" class="btn btn-outline-success btn-lg">Learn More About Us</a>
+  </div>
+</div>
+{% endblock %} 

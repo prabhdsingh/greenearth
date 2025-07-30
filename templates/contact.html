@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Contact Us | GreenEarth{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-7">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <h2 class="text-success fw-bold mb-4 text-center">Contact Us</h2>
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert alert-success">{{ message }}</div>
+            {% endfor %}
+          {% endif %}
+          <p class="mb-4 text-center">Have a question, suggestion, or just want to say hello? Fill out the form below or reach us directly at <a href="mailto:support@greenearth.com">support@greenearth.com</a>.</p>
+          <form method="post" action="{% url 'contact' %}">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="name" class="form-label">Your Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name">
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Email address</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com">
+            </div>
+            <div class="mb-3">
+              <label for="message" class="form-label">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="4" placeholder="Type your message..."></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success btn-lg">Send Message</button>
+            </div>
+          </form>
+          <hr class="my-4">
+          <div class="text-center">
+            <p class="mb-1"><i class="bi bi-geo-alt-fill text-success"></i> 300 Ouellette Ave, Windsor</p>
+            <p class="mb-1"><i class="bi bi-telephone-fill text-success"></i> +1 111 111 1111</p>
+            <p><i class="bi bi-envelope-fill text-success"></i> support@greenearth.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

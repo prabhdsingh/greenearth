@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block title %}Home | GreenEarth{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="py-5 text-center bg-success bg-gradient text-white rounded-4 shadow mb-5">
+  <div class="container">
+    <h1 class="display-4 fw-bold mb-3">Welcome to GreenEarth</h1>
+    <p class="lead mb-4">Your trusted marketplace for eco-friendly living. Discover sustainable products, support green businesses, and make a positive impact on our planet.</p>
+    <a href="{% url 'product_list' %}" class="btn btn-light btn-lg fw-bold shadow">Shop Eco Products</a>
+  </div>
+</section>
+
+<!-- Top Categories -->
+<section class="container mb-5">
+  <h2 class="mb-4 text-success text-center">Top Categories</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center">
+          <span class="display-3 mb-3 d-block">🌱</span>
+          <h5 class="card-title">Organic Gardening</h5>
+          <p class="card-text">Grow your own food and flowers with our range of organic seeds, saplings, compost, and eco-friendly tools.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center">
+          <span class="display-3 mb-3 d-block">🔋</span>
+          <h5 class="card-title">Solar Power Tools</h5>
+          <p class="card-text">Harness the power of the sun with our innovative solar-powered gadgets and home solutions.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card h-100 border-0 shadow-sm">
+        <div class="card-body text-center">
+          <span class="display-3 mb-3 d-block">🏡</span>
+          <h5 class="card-title">Eco-friendly Home Products</h5>
+          <p class="card-text">Upgrade your home with sustainable, non-toxic, and energy-saving products for a greener lifestyle.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Call to Action -->
+<section class="py-4 bg-light rounded-4 shadow-sm container text-center mb-5">
+  <h3 class="mb-3 text-success">Join the Green Movement!</h3>
+  <p class="mb-3">Sign up to track your eco-purchases, earn rewards, and connect with a community of green-minded shoppers.</p>
+  {% if not user.is_authenticated %}
+    <a href="{% url 'signup' %}" class="btn btn-success btn-lg fw-bold">Create Account</a>
+  {% endif %}
+</section>
+{% endblock %}

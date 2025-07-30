@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ blog.title }} - GreenDjango{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-8 mx-auto">
+            <!-- Back to Blogs Link -->
+            <div class="mb-3">
+                <a href="{% url 'blog_list' %}" class="btn btn-outline-secondary">
+                    <i class="fas fa-arrow-left"></i> Back to Blogs
+                </a>
+            </div>
+
+            <!-- Blog Post -->
+            <article class="card shadow-sm">
+                {% if blog.image %}
+                    <img src="{{ blog.image.url }}" class="card-img-top" 
+                         style="height: 400px; object-fit: cover;" alt="{{ blog.title }}">
+                {% endif %}
+                
+                <div class="card-body">
+                    <h1 class="card-title mb-3">{{ blog.title }}</h1>
+                    
+                    <!-- Blog Meta Information -->
+                    <div class="d-flex justify-content-between align-items-center mb-4 text-muted">
+                        <div>
+                            <i class="fas fa-user"></i> 
+                            <span class="ms-1">{{ blog.author.username }}</span>
+                        </div>
+                        <div>
+                            <i class="fas fa-calendar"></i> 
+                            <span class="ms-1">{{ blog.created_at|date:"F d, Y" }}</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        {{ blog.content|linebreaks }}
+                    </div>
+                </div>
+            </article>
+
+            <!-- Related Actions -->
+            <div class="mt-4 d-flex justify-content-between">
+                <a href="{% url 'blog_list' %}" class="btn btn-outline-primary">
+                    <i class="fas fa-list"></i> View All Blogs
+                </a>
+                
+                {% if user.is_authenticated and user.role == 'seller' %}
+                    <a href="{% url 'create_blog' %}" class="btn btn-success">
+                        <i class="fas fa-plus"></i> Create New Blog
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+.blog-content {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #333;
+}
+
+.blog-content p {
+    margin-bottom: 1.5rem;
+}
+
+.blog-content h2, .blog-content h3, .blog-content h4 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+}
+
+.blog-content ul, .blog-content ol {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+}
+
+.blog-content blockquote {
+    border-left: 4px solid #007bff;
+    padding-left: 1rem;
+    margin: 1.5rem 0;
+    font-style: italic;
+    color: #6c757d;
+}
+</style>
+{% endblock %} 

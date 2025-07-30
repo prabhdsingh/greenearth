@@ -1,0 +1,33 @@
+/* Bootstrap-friendly custom tweaks only */
+
+/* Example: Slightly adjust body background for eco feel */
+body {
+    background-color: #f2fdf5;
+    color: #2e4d35;
+}
+
+/* Example: Add shadow and rounded corners to login container */
+.login-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 12px rgba(0, 128, 0, 0.1);
+}
+
+/* Error message style for login */
+.error-msg {
+    color: red;
+    font-weight: bold;
+}
+
+/* Product card hover effect (Bootstrap compatible) */
+.product-card {
+    transition: transform 0.18s, box-shadow 0.18s;
+}
+.product-card:hover {
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 8px 32px rgba(67, 233, 123, 0.18);
+    border-color: #43e97b;
+}

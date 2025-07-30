@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title %}About Us | GreenEarth{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-5">
+          <h2 class="text-success fw-bold mb-4 text-center">About GreenEarth</h2>
+          <p class="lead">GreenEarth is dedicated to making eco-friendly living accessible and rewarding for everyone. Our platform connects conscious consumers with sustainable products, empowering you to make choices that are good for you and the planet.</p>
+          <hr>
+          <h4 class="fw-bold mt-4">Our Mission</h4>
+          <p>To inspire and enable a greener lifestyle by providing a curated selection of eco-friendly products, rewarding sustainable choices, and building a community of like-minded individuals.</p>
+          <h4 class="fw-bold mt-4">Why Choose Us?</h4>
+          <ul class="list-group list-group-flush mb-4">
+            <li class="list-group-item">🌱 Carefully curated eco-products</li>
+            <li class="list-group-item">🌍 Earn eco points for every purchase</li>
+            <li class="list-group-item">🤝 Support green businesses and local sellers</li>
+            <li class="list-group-item">💚 Join a community passionate about sustainability</li>
+          </ul>
+          <div class="text-center mt-4">
+            <a href="{% url 'product_list' %}" class="btn btn-success btn-lg">Shop Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Delete Product | GreenEarth{% endblock %}
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-7 col-lg-6">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4 text-center">
+          <h2 class="mb-4 text-danger fw-bold">Delete Product</h2>
+          <p>Are you sure you want to delete <strong>{{ product.name }}</strong>?</p>
+          <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger btn-lg">Yes, Delete</button>
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-secondary btn-lg ms-2">Cancel</a>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %} 

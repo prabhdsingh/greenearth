@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load form_tags %}
+{% block title %}Login | GreenEarth{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-5">
+      <div class="card shadow-lg border-0">
+        <div class="card-body p-4">
+          <h2 class="mb-4 text-success fw-bold text-center"><i class="bi bi-box-arrow-in-right"></i> Login</h2>
+          {% if form.errors %}
+            <div class="alert alert-danger">Invalid username or password. Please try again.</div>
+          {% endif %}
+          <form method="post" novalidate>
+            {% csrf_token %}
+            <div class="mb-3">
+              {{ form.username.label_tag }}
+              {{ form.username|add_class:'form-control' }}
+            </div>
+            <div class="mb-3">
+              {{ form.password.label_tag }}
+              {{ form.password|add_class:'form-control' }}
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn btn-success btn-lg">Login</button>
+            </div>
+          </form>
+          <div class="text-center mt-3">
+            <a href="{% url 'password_reset' %}" class="btn btn-link">Forgot your password?</a>
+          </div>
+          <div class="text-center mt-2">
+            <span>Don't have an account?</span> <a href="{% url 'signup' %}">Sign up</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

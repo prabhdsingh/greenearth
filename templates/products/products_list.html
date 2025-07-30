@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% block title %}Eco Products{% endblock %}
+{% block content %}
+
+<div class="container py-4">
+  <h2 class="mb-4 text-center text-success fw-bold">Eco-Friendly Products</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    {% for product in products %}
+      <div class="col">
+        <div class="card h-100 shadow-lg border-0 product-card position-relative">
+          {% if product.is_organic %}
+            <span class="badge bg-success position-absolute top-0 end-0 m-2">Organic</span>
+          {% endif %}
+          {% if product.image %}
+            <img src="{{ product.image.url }}" class="card-img-top rounded-top" style="height: 220px; object-fit: cover;" alt="{{ product.name }}">
+          {% else %}
+            <div class="bg-light text-center p-5 rounded-top">No Image</div>
+          {% endif %}
+          <div class="card-body d-flex flex-column">
+            <h5 class="card-title mb-2">
+              <a href="{% url 'product_detail' product.id %}" class="text-decoration-none text-success fw-bold">{{ product.name }}</a>
+            </h5>
+            <p class="card-text small text-muted mb-2">{{ product.category.name }}</p>
+            <p class="card-text flex-grow-1">{{ product.description|truncatewords:18 }}</p>
+            <div class="d-flex align-items-center justify-content-between mt-3">
+              <span class="fw-bold fs-5 text-success">${{ product.price }}</span>
+              <span class="badge bg-light text-success border border-success">Eco Points: {{ product.eco_points }}</span>
+            </div>
+          </div>
+          <div class="card-footer bg-white border-0 text-end">
+            <a href="{% url 'product_detail' product.id %}" class="btn btn-outline-success btn-sm">View Details</a>
+          </div>
+        </div>
+      </div>
+    {% empty %}
+      <div class="col-12">
+        <div class="alert alert-info text-center shadow-sm">
+          <h5>No products available yet.</h5>
+          <p>Check back soon for more eco-friendly options!</p>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<style>
+.product-card {
+  transition: transform 0.18s, box-shadow 0.18s;
+}
+.product-card:hover {
+  transform: translateY(-6px) scale(1.03);
+  box-shadow: 0 8px 32px rgba(67, 233, 123, 0.18);
+  border-color: #43e97b;
+}
+</style>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block title %}Your Visit History{% endblock %}
+
+{% block content %}
+<div class="container mt-4">
+  <h2>Your Visit History</h2>
+  <p><strong>Last Visit:</strong> {{ last_visit }}</p>
+
+  {% if visit_history %}
+    <ul class="list-group mt-3">
+      {% for date, count in visit_history %}
+        <li class="list-group-item d-flex justify-content-between">
+          <span>{{ date }}</span>
+          <span><strong>{{ count }}</strong> visit{{ count|pluralize }}</span>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>You have no visit history yet.</p>
+  {% endif %}
+</div>
+{% endblock %}
